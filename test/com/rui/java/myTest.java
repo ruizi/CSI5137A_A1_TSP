@@ -42,4 +42,17 @@ public class myTest {
         HillClimbing hillClimbing = new HillClimbing();
         hillClimbing.shortestRoute(route);
     }
+
+    @Test
+    public void test() {
+
+        String line = "  good12 morning34 good56 night78";
+
+        //对String进行split之后的数组的输出
+        String[] tt = line.trim().split("\\s+");
+        for (String s : tt) {
+            System.out.println(s);
+        }
+        System.out.println("#####");
+    }
 }
