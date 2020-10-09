@@ -1,4 +1,7 @@
-package com.rui.java;
+package com.rui.java.Algorithms;
+
+import com.rui.java.City;
+import com.rui.java.Route;
 
 import java.util.ArrayList;
 

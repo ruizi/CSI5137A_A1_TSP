@@ -13,6 +13,10 @@ public class Route {
         Collections.shuffle(cities); //make the list randomly.
     }
 
+    public Route(ArrayList<City> cities, boolean isShuffle) {
+        this.cities = cities;
+    }
+
     public Route(Route route) {
         this.cities.addAll(route.cities);
     }

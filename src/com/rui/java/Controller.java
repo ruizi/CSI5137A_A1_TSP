@@ -1,9 +1,11 @@
 package com.rui.java;
 
+import com.rui.java.Algorithms.HillClimbing;
+import com.rui.java.Algorithms.SteepestHillClimbing;
+import com.rui.java.Utils.test;
+
 import java.io.*;
 import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Scanner;
 
 public class Controller {
     public static void main(String[] args) {
@@ -21,14 +23,15 @@ public class Controller {
                 if (line.equals("EOF")) {
                     break;
                 }
-                System.out.println(line);
+                //System.out.println(line);
                 String[] arr = line.trim().split("\\s+");
                 City city = new City(Integer.parseInt(arr[0]), Integer.parseInt(arr[1]), Integer.parseInt(arr[2]));
                 cities.add(city);
             }
             Route initRoute = new Route(cities);
-            new HillClimbing().shortestRoute(initRoute);
-
+            Route shortestRoute_HillClimbing = new HillClimbing().shortestRoute(initRoute);
+            //Route shortestRoute_SteepestHillClimbing = new SteepestHillClimbing().shortestRoute(initRoute);
+            //new test().Paint(shortestRoute_HillClimbing);
         } catch (Exception e) {
             e.printStackTrace();
         }
