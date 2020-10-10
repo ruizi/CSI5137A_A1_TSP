@@ -2,6 +2,7 @@ package com.rui.java;
 
 import com.rui.java.Algorithms.FirstAscentHillClimbing;
 import com.rui.java.Algorithms.HillClimbing;
+import com.rui.java.Algorithms.RandomAscentHillClimbing;
 import com.rui.java.Algorithms.SteepestHillClimbing;
 import com.rui.java.Utils.test;
 
@@ -32,7 +33,8 @@ public class Controller {
             Route initRoute = new Route(cities);
             Route shortestRoute_HillClimbing = new HillClimbing().shortestRoute(initRoute);
             //Route shortestRoute_SteepestHillClimbing = new SteepestHillClimbing().shortestRoute(initRoute);
-            Route shortestRoute_FirstAscentHillClimbing = new FirstAscentHillClimbing().shortestRoute(initRoute);
+            //Route shortestRoute_FirstAscentHillClimbing = new FirstAscentHillClimbing().shortestRoute(initRoute);
+            Route shortestRoute_RandomAscentHillClimbing = new RandomAscentHillClimbing().shortestRoute(initRoute);
         } catch (Exception e) {
             e.printStackTrace();
         }
