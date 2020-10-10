@@ -1,4 +1,4 @@
-package com.rui.java.Algorithms;
+package com.rui.java.Algorithms.HillClimbing;
 
 import com.rui.java.City;
 import com.rui.java.Route;

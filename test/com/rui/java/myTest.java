@@ -1,6 +1,6 @@
 package com.rui.java;
 
-import com.rui.java.Algorithms.HillClimbing;
+import com.rui.java.Algorithms.HillClimbing.HillClimbing;
 import org.junit.Test;
 
 import java.util.ArrayList;
