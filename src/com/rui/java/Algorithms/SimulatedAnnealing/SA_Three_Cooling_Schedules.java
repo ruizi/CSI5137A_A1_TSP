@@ -8,7 +8,7 @@ import java.util.Collections;
 
 public class SA_Three_Cooling_Schedules {
     public static final double CoolingRate = 0.999;
-    public static final double InitTemperature = 3000;
+    public static final double InitTemperature = 1000;
     public static final double MIN_TEMP = 0.04;
     public static final int MAX_ITERATION_IN_ONE_TEMPERATURE = 280;
     double x = 1.001;

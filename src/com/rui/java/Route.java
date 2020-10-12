@@ -41,12 +41,32 @@ public class Route {
         int citiesSize = this.cities.size();
         List<City> preFix = new ArrayList<City>(this.cities).subList(0, pointA);
         List<City> postFix = new ArrayList<City>(this.cities).subList(pointB + 1, citiesSize);
-        List<City> reverseMiddle = new ArrayList<City>(this.cities).subList(pointA, pointB+1);
+        List<City> reverseMiddle = new ArrayList<City>(this.cities).subList(pointA, pointB + 1);
         Collections.reverse(reverseMiddle);
         this.cities = new ArrayList<>();
         this.cities.addAll(preFix);
         this.cities.addAll(reverseMiddle);
         this.cities.addAll(postFix);
+    }
+
+    public double getLoc_X_Max() {
+        double X_Max = 0;
+        for (City city : this.cities) {
+            if (city.getCoordinate_x() > X_Max) {
+                X_Max = city.getCoordinate_x();
+            }
+        }
+        return X_Max;
+    }
+
+    public double getLoc_Y_Max() {
+        double Y_Max = 0;
+        for (City city : this.cities) {
+            if (city.getCoordinate_x() > Y_Max) {
+                Y_Max = city.getCoordinate_x();
+            }
+        }
+        return Y_Max;
     }
 
     @Override

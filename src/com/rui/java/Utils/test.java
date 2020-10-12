@@ -19,7 +19,10 @@ public class test {
         long start = System.currentTimeMillis();
 
         BufferedImage image = ImageIO.read(new File(TEMPLATE_PATH));
-
+        int boardHeight = image.getHeight();
+        int boardWidth = image.getWidth();
+//        System.out.println(boardHeight);
+//        System.out.println(boardWidth);
         // create graphics
         Graphics2D graphics = image.createGraphics();
 
@@ -31,24 +34,28 @@ public class test {
         graphics.setRenderingHint(RenderingHints.KEY_ALPHA_INTERPOLATION, RenderingHints.VALUE_ALPHA_INTERPOLATION_QUALITY);
 
         // draw line
-        graphics.setPaint(Color.ORANGE);
+        graphics.setPaint(Color.BLACK);
         ArrayList<City> cities = route.getCities();
+        double X_MAX = route.getLoc_X_Max();
+        double Y_MAX = route.getLoc_Y_Max();
+//        System.out.println(X_MAX);
+//        System.out.println(Y_MAX);
         for (int i = 0; i < cities.size() - 1; i++) {
-            int x1 = cities.get(i).getCoordinate_x();
-            int y1 = cities.get(i).getCoordinate_y();
-            int x2 = cities.get(i + 1).getCoordinate_x();
-            int y2 = cities.get(i + 1).getCoordinate_y();
-            graphics.drawLine(x1, y1, x2, y2);
+            double x1 = (cities.get(i).getCoordinate_x() * 1.0 / X_MAX) * boardWidth * 0.95;
+            double y1 = (cities.get(i).getCoordinate_y() * 1.0 / Y_MAX) * boardHeight * 0.95;
+            double x2 = (cities.get(i + 1).getCoordinate_x() * 1.0 / X_MAX) * boardWidth * 0.95;
+            double y2 = (cities.get(i + 1).getCoordinate_y() * 1.0 / Y_MAX) * boardHeight * 0.95;
+            graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
         }
-        int x1 = cities.get(cities.size() - 1).getCoordinate_x();
-        int y1 = cities.get(cities.size() - 1).getCoordinate_y();
-        int x2 = cities.get(0).getCoordinate_x();
-        int y2 = cities.get(0).getCoordinate_y();
-        graphics.drawLine(x1, y1, x2, y2);
+        double x1 = (cities.get(cities.size() - 1).getCoordinate_x() * 1.0 / X_MAX) * boardWidth * 0.95;
+        double y1 = (cities.get(cities.size() - 1).getCoordinate_y() * 1.0 / Y_MAX) * boardHeight * 0.95;
+        double x2 = (cities.get(0).getCoordinate_x() * 1.0 / X_MAX) * boardWidth * 0.95;
+        double y2 = (cities.get(0).getCoordinate_y() * 1.0 / Y_MAX) * boardHeight * 0.95;
+        graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
         // store and end
         graphics.dispose();
         ImageIO.write(image, "PNG", new File(STORE_PATH));
 
-        System.out.println(System.currentTimeMillis() - start);
+        //System.out.println(System.currentTimeMillis() - start);
     }
 }
