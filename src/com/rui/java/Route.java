@@ -1,9 +1,11 @@
 package com.rui.java;
 
+import javax.swing.*;
 import java.text.DecimalFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
+import java.util.List;
 
 public class Route {
     private ArrayList<City> cities = new ArrayList<City>();
@@ -33,6 +35,18 @@ public class Route {
         sum += cities.get(cities.size() - 1).calculateDistance(cities.get(0)); //back to the start city.
         DecimalFormat df = new DecimalFormat("#.00"); //set the format standard.
         return Double.parseDouble(df.format(sum));
+    }
+
+    public void reverseFromA2B(int pointA, int pointB) {
+        int citiesSize = this.cities.size();
+        List<City> preFix = new ArrayList<City>(this.cities).subList(0, pointA);
+        List<City> postFix = new ArrayList<City>(this.cities).subList(pointB + 1, citiesSize);
+        List<City> reverseMiddle = new ArrayList<City>(this.cities).subList(pointA, pointB+1);
+        Collections.reverse(reverseMiddle);
+        this.cities = new ArrayList<>();
+        this.cities.addAll(preFix);
+        this.cities.addAll(reverseMiddle);
+        this.cities.addAll(postFix);
     }
 
     @Override

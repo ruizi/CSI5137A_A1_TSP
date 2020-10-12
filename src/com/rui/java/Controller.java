@@ -1,6 +1,8 @@
 package com.rui.java;
 
+import com.rui.java.Algorithms.RandomRestart.RandomRestart;
 import com.rui.java.Algorithms.SimulatedAnnealing.SA_Three_Cooling_Schedules;
+import com.rui.java.Algorithms.TabuSearch.TabuSearch;
 import com.rui.java.Utils.test;
 
 import java.io.*;
@@ -32,10 +34,12 @@ public class Controller {
             //Route shortestRoute_SteepestHillClimbing = new SteepestHillClimbing().shortestRoute(initRoute);
             //Route shortestRoute_FirstAscentHillClimbing = new FirstAscentHillClimbing().shortestRoute(initRoute);
             //Route shortestRoute_RandomAscentHillClimbing = new RandomAscentHillClimbing().shortestRoute(initRoute);
-            Route SimulatedAnnealing_Exponential = new SA_Three_Cooling_Schedules().shortestRoute_exponential_decay(initRoute, "Exponential");
-            //Route SimulatedAnnealing_Liner = new SA_Three_Cooling_Schedules().shortestRoute_exponential_decay(initRoute, "Liner");
-            //Route SimulatedAnnealing_Logarithmic = new SA_Three_Cooling_Schedules().shortestRoute_exponential_decay(initRoute, "Logarithmic");
-            new test().Paint(SimulatedAnnealing_Exponential);
+            //Route SimulatedAnnealing_Exponential = new SA_Three_Cooling_Schedules().shortestRoute(initRoute, "Exponential");
+            //Route SimulatedAnnealing_Liner = new SA_Three_Cooling_Schedules().shortestRoute(initRoute, "Liner");
+            //Route SimulatedAnnealing_Logarithmic = new SA_Three_Cooling_Schedules().shortestRoute(initRoute, "Logarithmic");
+            //Route tabuSearch = new TabuSearch().shortestRoute(initRoute);
+            Route randomRestart = new RandomRestart().shortestRoute(initRoute);
+            //new test().Paint(SimulatedAnnealing_Exponential);
         } catch (Exception e) {
             e.printStackTrace();
         }

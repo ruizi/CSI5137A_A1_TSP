@@ -4,20 +4,24 @@ import com.rui.java.City;
 import com.rui.java.Route;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class SA_Three_Cooling_Schedules {
     public static final double CoolingRate = 0.999;
     public static final double InitTemperature = 3000;
     public static final double MIN_TEMP = 0.04;
-    public static final int MAX_ITERATION_IN_ONE_TEMPERATURE = 200;
+    public static final int MAX_ITERATION_IN_ONE_TEMPERATURE = 280;
     double x = 1.001;
 
-    public Route shortestRoute_exponential_decay(Route currentRoute, String mode) {
+    public Route shortestRoute(Route currentRoute, String mode) {
         System.out.println("init route:" + currentRoute.toString() + "| Route distance:" + currentRoute.calTotalDistance());
         double temperature = InitTemperature;
         while (true) {
+            if (temperature < MIN_TEMP) {
+                break;
+            }
             for (int i = 0; i < MAX_ITERATION_IN_ONE_TEMPERATURE; i++) {
-                Route neighborRoute = getANeighborRoute(new Route(currentRoute));
+                Route neighborRoute = getANeighborRoute_Reverse(new Route(currentRoute));
                 double acceptProbability = annealingProbability(currentRoute, neighborRoute, temperature);
                 if (acceptProbability >= (Math.random())) {
                     currentRoute = neighborRoute;
@@ -25,9 +29,6 @@ public class SA_Three_Cooling_Schedules {
                 } else {
                     //System.out.printf("Not a better instance  | ->Stay | Route distance: %7.2f | iteration  : %7d \n", currentRoute.calTotalDistance(), i);
                 }
-            }
-            if (temperature < MIN_TEMP) {
-                break;
             }
             if (mode.equals("Exponential")) {
                 temperature *= CoolingRate;
@@ -51,7 +52,7 @@ public class SA_Three_Cooling_Schedules {
         }
     }
 
-    public Route getANeighborRoute(Route route) {
+    public Route getANeighborRoute_Swap(Route route) {
         int cityOneIndex = 0;
         int cityTwoIndex = 0;
         while (cityOneIndex == cityTwoIndex) {
@@ -62,6 +63,21 @@ public class SA_Three_Cooling_Schedules {
         City cityTwo = route.getCities().get(cityTwoIndex);
         route.getCities().set(cityOneIndex, cityTwo);
         route.getCities().set(cityTwoIndex, cityOne);
+        return route;
+    }
+
+    public Route getANeighborRoute_Reverse(Route route) {
+        int cityOneIndex = 0;
+        int cityTwoIndex = 0;
+        while (cityOneIndex == cityTwoIndex) {
+            cityOneIndex = (int) (route.getCities().size() * Math.random());
+            cityTwoIndex = (int) (route.getCities().size() * Math.random());
+        }
+        if (cityOneIndex < cityTwoIndex) {
+            route.reverseFromA2B(cityOneIndex, cityTwoIndex);
+        } else {
+            route.reverseFromA2B(cityTwoIndex, cityOneIndex);
+        }
         return route;
     }
 
