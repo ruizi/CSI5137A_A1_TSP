@@ -11,14 +11,14 @@ import java.util.ArrayList;
 import java.util.Collections;
 
 public class test {
-    private static final String STORE_PATH = "src/com/rui/java/Utils/result.png";
-    private static final String TEMPLATE_PATH = "src/com/rui/java/Utils/temp.jpeg";
+//    private static final String STORE_PATH = "src/com/rui/java/Utils/Route.png";
+//    private static final String TEMPLATE_PATH = "src/com/rui/java/Utils/VisualBoard.jpeg";
 
-    public void Paint(Route route) throws Exception {
+    public void Paint(Route route,String VisualBoard_Loc,String Route_Loc) throws Exception {
 
         long start = System.currentTimeMillis();
 
-        BufferedImage image = ImageIO.read(new File(TEMPLATE_PATH));
+        BufferedImage image = ImageIO.read(new File(VisualBoard_Loc));
         int boardHeight = image.getHeight();
         int boardWidth = image.getWidth();
 //        System.out.println(boardHeight);
@@ -54,7 +54,7 @@ public class test {
         graphics.drawLine((int) x1, (int) y1, (int) x2, (int) y2);
         // store and end
         graphics.dispose();
-        ImageIO.write(image, "PNG", new File(STORE_PATH));
+        ImageIO.write(image, "PNG", new File(Route_Loc));
 
         //System.out.println(System.currentTimeMillis() - start);
     }

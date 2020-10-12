@@ -10,6 +10,8 @@ import com.rui.java.Algorithms.TabuSearch.TabuSearch;
 import com.rui.java.Utils.test;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -19,6 +21,8 @@ public class Controller {
         //String pathname = "src/com/rui/res/a280.tsp.txt"; // 绝对路径或相对路径都可以，这里是绝对路径，写入文件时演示相对路径
         String inputFileName = "";
         String filename = "";
+        String VisualBoard_Loc = "";
+        String Route_Loc = "";
         if (args.length > 1) {
             System.out.println("Invalid input numbers");
             System.exit(1);
@@ -26,9 +30,13 @@ public class Controller {
             System.out.println("Use default input file. (a280.tsp)");
             filename = "ch150.tsp.txt";
             inputFileName = pathname + filename;
+            VisualBoard_Loc = "src/com/rui/java/Utils/VisualBoard.jpeg";
+            Route_Loc = "src/com/rui/java/Utils/Route.png";
         } else {
             filename = args[0];
             inputFileName = filename; // 绝对路径或相对路径都可以，这里是绝对路径，写入文件时演示相对路径
+            VisualBoard_Loc = "VisualBoard.jpeg";
+            Route_Loc = "Route.png";
         }
 
 
@@ -101,9 +109,41 @@ public class Controller {
                 shortestRoute = new TabuSearch().shortestRoute(initRoute);
             }
             System.out.println(shortestRoute.toString());
-            new test().Paint(shortestRoute);
+            writeSolution(shortestRoute);
+            new test().Paint(shortestRoute, VisualBoard_Loc, Route_Loc);
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void writeSolution(Route shortRoute) {
+        ArrayList<City> cities = shortRoute.getCities();
+        //第一步：设置输出的文件路径
+        //如果该目录下不存在该文件，则文件会被创建到指定目录下。如果该目录有同名文件，那么该文件将被覆盖。
+        File writeFile = new File("solution.csv");
+
+        try {
+            //第二步：通过BufferedReader类创建一个使用默认大小输出缓冲区的缓冲字符输出流
+            OutputStreamWriter out = new OutputStreamWriter(new FileOutputStream(writeFile), StandardCharsets.UTF_8);
+            BufferedWriter writeText = new BufferedWriter(out);
+
+            //第三步：将文档的下一行数据赋值给lineData，并判断是否为空，若不为空则输出
+            for (City city : cities) {
+                writeText.newLine();    //换行
+                //调用write的方法将字符串写到流中
+                writeText.write(String.valueOf(city.getID()));
+            }
+
+            //使用缓冲区的刷新方法将数据刷到目的地中
+            writeText.flush();
+            //关闭缓冲区，缓冲区没有调用系统底层资源，真正调用底层资源的是FileWriter对象，缓冲区仅仅是一个提高效率的作用
+            //因此，此处的close()方法关闭的是被缓存的流对象
+            writeText.close();
+        } catch (FileNotFoundException e) {
+            System.out.println("没有找到指定文件");
+        } catch (IOException e) {
+            System.out.println("文件读写出错");
+        }
+
     }
 }
