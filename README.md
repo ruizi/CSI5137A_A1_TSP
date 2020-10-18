@@ -6,10 +6,10 @@ Attach a jar file in the Fold: TSP_Project/out/artifacts/TSP_Project_jar
 
 Running this jar with the following scripts
 ```shell script
-# without attaching specify tsp file,the program will use a280.tsp
+# without attaching specify tsp file, the program will use a280.tsp
 java -jar TSP_Project.jar
 
-# Or with specify tsp file in the same fold. ex.
+# Or with specifying tsp file in the same fold. ex.
 java -jar TSP_Project.jar ch150.tsp
 ```
 
