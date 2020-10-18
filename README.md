@@ -16,3 +16,6 @@ java -jar TSP_Project.jar ch150.tsp
 The VisualBoard.jpeg is a paint board to visualise the travelling path.
 The output is the Route.png
 
+a280.tsp path with “Simulated Annealing Exponential Cooling”.
+
+![image](https://github.com/ruizi/CSI5137A_A1_TSP/blob/master/src/com/rui/java/Utils/Route.png)
