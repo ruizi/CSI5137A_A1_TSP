@@ -65,7 +65,6 @@ public class Controller {
                 }
                 System.out.println(line);
                 String[] arr = line.trim().split("\\s+");
-
                 City city = new City(Integer.parseInt(arr[0]), Double.parseDouble(arr[1]), Double.parseDouble(arr[2]));
                 cities.add(city);
             }
@@ -80,11 +79,12 @@ public class Controller {
             System.out.println("6.Simulated Annealing Liner Cooling.");
             System.out.println("7.Simulated Annealing Logarithmic Cooling.");
             System.out.println("8.Tabu Search.");
+            System.out.println("9.Random Restart with Steepest Hill Climbing.");
             Scanner scanner = new Scanner(System.in);
             int choseAlgorithms;
             while (true) {
                 choseAlgorithms = scanner.nextInt();
-                if (choseAlgorithms >= 1 && choseAlgorithms <= 8) {
+                if (choseAlgorithms >= 1 && choseAlgorithms <= 9) {
                     break;
                 } else {
                     System.out.println("Input Valid.");
@@ -105,8 +105,10 @@ public class Controller {
                 shortestRoute = new SA_Three_Cooling_Schedules().shortestRoute(initRoute, "Liner");
             } else if (choseAlgorithms == 7) {
                 shortestRoute = new SA_Three_Cooling_Schedules().shortestRoute(initRoute, "Logarithmic");
-            } else {
+            } else if (choseAlgorithms == 8) {
                 shortestRoute = new TabuSearch().shortestRoute(initRoute);
+            } else {
+                shortestRoute = new RandomRestart().shortestRoute(initRoute);
             }
             System.out.println(shortestRoute.toString());
             writeSolution(shortestRoute);
