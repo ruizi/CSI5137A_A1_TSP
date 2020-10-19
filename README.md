@@ -17,8 +17,9 @@ The VisualBoard.jpeg is a paint board to visualise the travelling path.
 The output is the Route.png
 
 a280.tsp path with “Simulated Annealing Exponential Cooling”.
+![image](https://www.notion.so/image/https%3A%2F%2Fs3-us-west-2.amazonaws.com%2Fsecure.notion-static.com%2F0205693a-bc31-41e5-817b-637b45a8d905%2F2020-10-19_17.47.47.png?table=block&id=0a95b293-9663-47e6-a921-7b9e5b7687da&width=1510&userId=&cache=v2)
 
-![image](https://github.com/ruizi/CSI5137A_A1_TSP/blob/master/src/com/rui/java/Utils/Route.png)
+Cook Book:
 ---
 
 # 1. Project Structure
