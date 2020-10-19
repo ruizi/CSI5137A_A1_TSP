@@ -2,7 +2,7 @@
 
 The repository for assignment of CSI5137A
 
-Attach a jar file in the Fold: TSP_Project/out/artifacts/TSP_Project_jar
+Attach a jar file in the Fold: [TSP_Project/out/artifacts/TSP_Project_jar](https://github.com/ruizi/CSI5137A_A1_TSP/tree/master/out/artifacts/TSP_Project_jar)
 
 Running this jar with the following scripts
 ```shell script
