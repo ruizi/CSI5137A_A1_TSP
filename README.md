@@ -2,6 +2,8 @@
 
 The repository for assignment of CSI5137A
 
+The note about this assignment: [TSP_Project_Note](https://www.notion.so/ruitsai/TSP-Project-9fa0a1551dbf414b82c09980bd8367a9)
+
 Attach a jar file in the Fold: [TSP_Project/out/artifacts/TSP_Project_jar](https://github.com/ruizi/CSI5137A_A1_TSP/tree/master/out/artifacts/TSP_Project_jar)
 
 Running this jar with the following scripts
