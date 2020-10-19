@@ -1,14 +1,13 @@
 package com.rui.java.Utils;
 
-import com.rui.java.City;
-import com.rui.java.Route;
+import com.rui.java.Models.City;
+import com.rui.java.Models.Route;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.util.ArrayList;
-import java.util.Collections;
 
 public class test {
 //    private static final String STORE_PATH = "src/com/rui/java/Utils/Route.png";

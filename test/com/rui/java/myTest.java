@@ -1,6 +1,8 @@
 package com.rui.java;
 
-import com.rui.java.Algorithms.HillClimbing.HillClimbing;
+import com.rui.java.Views.Algorithms.HillClimbing.HillClimbing;
+import com.rui.java.Models.City;
+import com.rui.java.Models.Route;
 import org.junit.Test;
 
 import java.util.ArrayList;
