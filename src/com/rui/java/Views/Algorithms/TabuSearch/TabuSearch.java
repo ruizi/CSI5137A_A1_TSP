@@ -6,25 +6,25 @@ import com.rui.java.Models.Route;
 import java.util.ArrayList;
 
 public class TabuSearch {
-    public static final int MAX_ITERATION = 2000;
+    public static final int MAX_ITERATION = 1000;
     public static final int MAX_TABU_SIZE = 10;
 
     public Route shortestRoute(Route currentRoute) {
         int iterationCount = 0;
-        Route bestRoute = currentRoute; //用来存储已经直到的最优点，区别于climbing中s即是当前点也是最优点
+        Route bestRoute = currentRoute; //this stores the best points the algorithm has got. 用来存储已经直到的最优点，区别于climbing中s即是当前点也是最优点
         ArrayList<Route> tabuList = new ArrayList<>();
         while (iterationCount < MAX_ITERATION) {
-            ArrayList<Route> neighborRoutes = getNeighborRoutes(new Route(currentRoute)); //拿到所有的邻居方案
+            ArrayList<Route> neighborRoutes = getNeighborRoutes(new Route(currentRoute));
             Route bestNeighborRoute = null;
             for (Route neighborRoute : neighborRoutes) {
                 double neighborRouteDistance = neighborRoute.calTotalDistance();
                 //remember visited solutions and avoid coming back.
                 if ((!tabuList.contains(neighborRoute)) && (bestNeighborRoute == null || neighborRouteDistance < bestNeighborRoute.calTotalDistance())) { //如果不在tabuList中，同时效果比当前好
-                    bestNeighborRoute = neighborRoute;//当前点就移动到新找到的点
+                    bestNeighborRoute = neighborRoute;
                 }
             }
             currentRoute = bestNeighborRoute;
-            if (currentRoute.calTotalDistance() < bestRoute.calTotalDistance()) { //如果当前最优点比全局最优点都好，就把全局最优更新
+            if (currentRoute.calTotalDistance() < bestRoute.calTotalDistance()) { //if current route is better than the global optima far now, then the global best move to current route. 如果当前最优点比全局最优点都好，就把全局最优更新
                 bestRoute = currentRoute;
                 tabuList.add(currentRoute);
             }

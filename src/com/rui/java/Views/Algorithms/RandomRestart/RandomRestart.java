@@ -6,7 +6,7 @@ import com.rui.java.Models.Route;
 import java.util.ArrayList;
 
 public class RandomRestart {
-    private static final int MAX_RANDOM_TIME = 10;
+    private static final int MAX_RANDOM_TIME = 5;
 
     public Route shortestRoute(Route currentRoute) {
         ArrayList<Route> opt_Routes = new ArrayList<>();
@@ -40,9 +40,9 @@ public class RandomRestart {
                 }
             }
             if (climb) {
-                System.out.println("Restart time:" + restartTimes + " Find better instance   | ->move ｜ Route distance:" + curRoute.calTotalDistance());
+                System.out.println("Restart times:" + restartTimes + " Find better instance   | ->move ｜ Route distance:" + curRoute.calTotalDistance());
             } else {
-                System.out.println("Restart time:" + restartTimes + " May be the shortest distance : " + curRoute.calTotalDistance());
+                System.out.println("Restart times:" + restartTimes + " May be the shortest distance : " + curRoute.calTotalDistance());
             }
         }
         return curRoute;
